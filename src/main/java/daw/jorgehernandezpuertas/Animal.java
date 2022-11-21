@@ -26,9 +26,12 @@ public class Animal {
     public Animal(LocalDate fechaNacimiento, String nombre, String tipo, double peso, String estado) {
         this.fechaNacimiento = fechaNacimiento;
         this.nombre = nombre;
-        this.tipo = tipo;
+        this.tipo = (tipo.equals("gato") || tipo.equals("perro") || tipo.equals("largarto")
+                || tipo.equals("cobaya") || tipo.equals("periquito")  ) ? tipo:null;
         this.peso = peso;
-        this.estado = estado;
+        this.estado = (estado.equals("comiendo") || estado.equals("durmiendo") || 
+                estado.equals("despierto") || estado.equals("reposo") || 
+                estado.equals("jugando")) ? estado:null;
     }
     
     // Getters
