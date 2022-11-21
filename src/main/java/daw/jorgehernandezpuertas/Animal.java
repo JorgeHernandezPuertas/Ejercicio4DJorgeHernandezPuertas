@@ -23,7 +23,7 @@ public class Animal {
     public Animal() {
     }
 
-    public Animal(LocalDate fechaNacimiento, String nombre, String tipo, int peso, String estado) {
+    public Animal(LocalDate fechaNacimiento, String nombre, String tipo, double peso, String estado) {
         this.fechaNacimiento = fechaNacimiento;
         this.nombre = nombre;
         this.tipo = tipo;
