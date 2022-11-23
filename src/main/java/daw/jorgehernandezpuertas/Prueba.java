@@ -45,9 +45,9 @@ public class Prueba {
         try {
             p1.jugar(a1, 200);
         } catch (IllegalArgumentException iae) {
-            
+            System.out.println("Se ha excedido el tiempo de juego máximo");
         }
         System.out.println("a1 pesa " + a1.getPeso() + " gramos");
-        
+
     }
 }
