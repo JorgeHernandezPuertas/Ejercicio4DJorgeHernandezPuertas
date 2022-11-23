@@ -48,7 +48,7 @@ public class Persona {
             this.edad = edad;
         }
     }
-    
+
     // Método toString
     @Override
     public String toString() {
@@ -59,25 +59,24 @@ public class Persona {
         sb.append('}');
         return sb.toString();
     }
-    
+
     // Método llamar
     public void llamar(Animal pet) {
         pet.despertar();
     }
-    
+
     //Método alimentar
     public void alimentar(Animal pet, double cantidadGramos) {
         pet.comer(cantidadGramos);
     }
-    
+
     // Método jugar
     public void jugar(Animal pet, int cantidadMinutos) {
         cantidadMinutos = Math.abs(cantidadMinutos);
-        if (cantidadMinutos > 180) {
-            pet.jugar(180); // 180 es la cantidad máxima
-            throw new IllegalArgumentException();
-        } else {
+        try {
             pet.jugar(cantidadMinutos);
+        } catch (IllegalArgumentException iae) {
+            pet.jugar(180); // Cantidad máxima permitida
         }
     }
 }

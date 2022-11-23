@@ -107,9 +107,9 @@ public class Animal {
     public void descansar() {
         this.estado = "reposo";
     }
-    
+
     // Método comer
-    public void comer(double cantidadGramos)  {
+    public void comer(double cantidadGramos) {
         this.peso += cantidadGramos;
     }
 
@@ -139,11 +139,13 @@ public class Animal {
     // Método de clase para clonar un animal
     public static Animal clonar(Animal pet) {
         Animal petAux = new Animal();
-        petAux.estado = pet.estado;
-        petAux.fechaNacimiento = pet.fechaNacimiento;
-        petAux.nombre = pet.nombre;
-        petAux.peso = pet.peso;
-        petAux.tipo = pet.tipo;
+        if (pet != null) {
+            petAux.estado = pet.estado;
+            petAux.fechaNacimiento = pet.fechaNacimiento;
+            petAux.nombre = pet.nombre;
+            petAux.peso = pet.peso;
+            petAux.tipo = pet.tipo;
+        }
         return petAux;
     }
 }
