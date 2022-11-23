@@ -107,12 +107,17 @@ public class Animal {
     public void descansar() {
         this.estado = "reposo";
     }
+    
+    // Método comer
+    public void comer(double cantidadGramos)  {
+        this.peso += cantidadGramos;
+    }
 
     // Método jugar (El tiempo de juego serán minutos)
     public void jugar(int cantidadMinutos) {
         cantidadMinutos = Math.abs(cantidadMinutos); // Si es negativo la pongo positiva
         if (cantidadMinutos > 180) {
-            throw new IllegalArgumentException("El valor utilizado excede el máximo (180)");
+            throw new IllegalArgumentException();
         } else {
             this.estado = "jugando";
             if (cantidadMinutos < 30) {
@@ -134,15 +139,11 @@ public class Animal {
     // Método de clase para clonar un animal
     public static Animal clonar(Animal pet) {
         Animal petAux = new Animal();
-        try {
         petAux.estado = pet.estado;
         petAux.fechaNacimiento = pet.fechaNacimiento;
         petAux.nombre = pet.nombre;
         petAux.peso = pet.peso;
         petAux.tipo = pet.tipo;
-        } catch (NullPointerException npe) {
-            System.out.println("No se ha puede clonar un animal que no está registrado");
-        }
         return petAux;
     }
 }
