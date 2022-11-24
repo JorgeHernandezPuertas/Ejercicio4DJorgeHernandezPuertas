@@ -15,26 +15,20 @@ public class Animal {
     // Atributos
     private LocalDate fechaNacimiento;
     private String nombre;
-    private String tipo; // Puede ser: "gato", "perro", "lagarto", "cobaya", "periquito"
+    private TipoAnimal tipo; // Puede ser: "gato", "perro", "lagarto", "cobaya", "periquito"
     private double peso; // En gramos
-    private String estado; // Puede ser: "comiendo", "durmiendo", "despierto/reposo" o "jugando"
+    private EstadoAnimal estado; // Puede ser: "comiendo", "durmiendo", "despierto/reposo" o "jugando"
 
     // Constructores
     public Animal() {
     }
 
-    public Animal(LocalDate fechaNacimiento, String nombre, String tipo, double peso, String estado) {
+    public Animal(LocalDate fechaNacimiento, String nombre, TipoAnimal tipo, double peso, EstadoAnimal estado) {
         this.fechaNacimiento = fechaNacimiento;
         this.nombre = nombre;
-        // Si no es un tipo permitido se pone null
-        this.tipo = (tipo.equals("gato") || tipo.equals("perro")
-                || tipo.equals("largarto") || tipo.equals("cobaya")
-                || tipo.equals("periquito")) ? tipo : null;
+        this.tipo = tipo;
         this.peso = peso;
-        this.estado = (estado.equals("comiendo")
-                || estado.equals("durmiendo") || estado.equals("despierto")
-                || estado.equals("reposo") || estado.equals("jugando"))
-                ? estado : null; // Si no está permitido se pone null
+        this.estado = estado; 
     }
 
     // Getters
@@ -46,7 +40,7 @@ public class Animal {
         return nombre;
     }
 
-    public String getTipo() {
+    public TipoAnimal getTipo() {
         return tipo;
     }
 
@@ -54,7 +48,7 @@ public class Animal {
         return peso;
     }
 
-    public String getEstado() {
+    public EstadoAnimal getEstado() {
         return estado;
     }
 
@@ -67,7 +61,7 @@ public class Animal {
         this.nombre = nombre;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(TipoAnimal tipo) {
         this.tipo = tipo;
     }
 
@@ -75,7 +69,7 @@ public class Animal {
         this.peso = peso;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(EstadoAnimal estado) {
         this.estado = estado;
     }
 
@@ -95,22 +89,24 @@ public class Animal {
 
     // Método dormir
     public void dormir() {
-        this.estado = "durmiendo";
+        this.estado = EstadoAnimal.DURMIENDO;
     }
 
     // Método despertar
     public void despertar() {
-        this.estado = "despierto";
+        this.estado = EstadoAnimal.DESPIERTO;
     }
 
     // Método descansar
     public void descansar() {
-        this.estado = "reposo";
+        this.estado = EstadoAnimal.REPOSO;
     }
 
     // Método comer
     public void comer(double cantidadGramos) {
+        cantidadGramos = Math.abs(cantidadGramos);
         this.peso += cantidadGramos;
+        this.estado = EstadoAnimal.COMIENDO;
     }
 
     // Método jugar (El tiempo de juego serán minutos)
@@ -119,7 +115,7 @@ public class Animal {
         if (cantidadMinutos > 180) {
             throw new IllegalArgumentException();
         } else {
-            this.estado = "jugando";
+            this.estado = EstadoAnimal.JUGANDO;
             if (cantidadMinutos < 30) {
                 this.peso -= 10;
             } else if (cantidadMinutos < 60) {
@@ -130,8 +126,10 @@ public class Animal {
                 this.peso -= 60;
             } else if (cantidadMinutos < 150) {
                 this.peso -= 80;
-            } else {
+            } else if (cantidadMinutos < 180) {
                 this.peso -= 100;
+            } else {
+                this.peso -= 120;
             }
         }
     }

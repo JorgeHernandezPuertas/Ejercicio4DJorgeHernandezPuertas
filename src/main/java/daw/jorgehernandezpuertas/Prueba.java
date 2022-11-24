@@ -16,7 +16,7 @@ public class Prueba {
         // Creo dos objetos animal
         Animal a2 = new Animal();
         Animal a1 = new Animal(LocalDate.of(2006, 2, 12),
-                "milo", "perro", 3430, "durmiendo");
+                "milo", TipoAnimal.PERRO, 3430, EstadoAnimal.DURMIENDO);
 
         // Creo dos personas
         Persona p1 = new Persona("Jorge", 22);
