@@ -44,5 +44,10 @@ public class Prueba {
         // p1 juega con a1 durante 200 minutos (no se puede y jugará 180 minutos)
         p1.jugar(a1, 200);
         System.out.println("a1 pesa " + a1.getPeso() + " gramos");
+        
+        
+        
+        
+        
     }
 }
